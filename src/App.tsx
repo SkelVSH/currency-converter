@@ -1,3 +1,9 @@
-const App = () => <div>React App</div>;
+import { RatesProvider } from './providers/RatesContext';
+
+const App = () => (
+  <RatesProvider>
+    <div>React App</div>
+  </RatesProvider>
+);
 
 export default App;
