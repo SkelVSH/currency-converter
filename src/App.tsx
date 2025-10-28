@@ -1,8 +1,14 @@
+import { Header } from './components/Header';
+import { Layout } from './components/Layout';
+import { Converter } from './features/Converter';
 import { RatesProvider } from './providers/RatesContext';
 
 const App = () => (
   <RatesProvider>
-    <div>React App</div>
+    <Layout>
+      <Header />
+      <Converter />
+    </Layout>
   </RatesProvider>
 );
 

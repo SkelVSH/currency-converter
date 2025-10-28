@@ -24,7 +24,10 @@
       "@utils/*": ["./src/utils/*"],
       "@providers/*": ["./src/providers/*"],
       "@services/*": ["./src/services/*"],
-      "@types/*": ["./src/types/*"]
+      "@types/*": ["./src/types/*"],
+      "@components/*": ["./src/components/*"],
+      "@features/*": ["./src/features/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src", "**/*.ts", "**/*.tsx", "eslint.config.js"],

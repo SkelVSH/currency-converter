@@ -1,1 +1,65 @@
+@import 'tailwindcss';
+
 @layer reset, base;
+
+@theme {
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-950: var(--neutral-950);
+
+  --color-green-50: var(--green-50);
+  --color-green-200: var(--green-200);
+  --color-green-700: var(--green-700);
+
+  --color-blue-50: var(--blue-50);
+  --color-blue-200: var(--blue-200);
+  --color-blue-700: var(--blue-700);
+
+  --color-red-50: var(--red-50);
+  --color-red-200: var(--red-200);
+  --color-red-700: var(--red-700);
+}
+
+@layer base {
+  :root {
+    --neutral-50: #fafafa;
+    --neutral-300: #d4d4d4;
+    --neutral-500: #737373;
+    --neutral-950: #0a0a0a;
+
+    --green-50: #f0fdf4;
+    --green-200: #b9f8cf;
+    --green-700: #008236;
+
+    --blue-50: #eff6ff;
+    --blue-200: #bedbff;
+    --blue-700: #1447e6;
+
+    --red-50: #fef2f2;
+    --red-200: #ffc9c9;
+    --red-700: #c10007;
+  }
+
+  @font-face {
+    font-family: 'Inter Variable';
+    src: url('/fonts/Inter-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+
+    font-family: 'Inter Variable', sans-serif;
+    color: var(--neutral-950);
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
