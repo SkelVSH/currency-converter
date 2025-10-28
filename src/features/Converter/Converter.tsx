@@ -5,31 +5,50 @@ import { CurrencySwitch } from '@/components/CurrencySwitch';
 import { AMOUNT_REGEX } from '@/const';
 import { useRates } from '@providers/RatesContext';
 import { getUserInput, setUserInput } from '@services/userInput';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { CurrencyModal } from '../CurrencyModal';
+import { CurrencyPair } from '@/types';
 
 export const Converter = () => {
   const { getRate, currenciesList } = useRates();
   const cachedData = getUserInput();
-  const [pair, setPair] = useState({
+  const [pair, setPair] = useState<CurrencyPair>({
     base: cachedData?.base || currenciesList[0]?.key,
     target: cachedData?.target || currenciesList[1]?.key,
   });
   const [amount, setAmount] = useState(cachedData?.amount || '1');
+  const [currencyModal, setCurrencyModal] = useState<keyof CurrencyPair | null>(
+    null
+  );
 
-  const handleChangePair = (base: string, target: string) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleOpenModal = (type: keyof CurrencyPair) => setCurrencyModal(type);
+  const handleCloseModal = () => setCurrencyModal(null);
+
+  const handleChangePair = ({ base, target }: Partial<CurrencyPair>) => {
     setPair({
-      base,
-      target,
+      base: base ?? pair.base,
+      target: target ?? pair.target,
     });
 
     setUserInput({
       amount: amount ?? '',
-      base: base,
-      target: target,
+      base: base ?? pair.base,
+      target: target ?? pair.target,
     });
+
+    inputRef.current?.focus();
   };
 
-  const handleSwitchPair = () => handleChangePair(pair.target, pair.base);
+  const handleSwitchPair = () => {
+    handleChangePair({
+      base: pair.target,
+      target: pair.base,
+    });
+
+    inputRef.current?.focus();
+  };
 
   const handleChangeAmount = (amount: string) => {
     if (amount === '' || AMOUNT_REGEX.test(amount)) {
@@ -51,11 +70,16 @@ export const Converter = () => {
   return (
     <div className="flex items-start gap-7.5">
       <Box className="flex-1">
-        <ConverterInput amount={amount} onChangeAmount={handleChangeAmount} />
+        <ConverterInput
+          ref={inputRef}
+          amount={amount}
+          onChangeAmount={handleChangeAmount}
+        />
         <CurrencySwitch
           base={pair.base}
           target={pair.target}
           handleSwitchPair={handleSwitchPair}
+          handleOpenModal={handleOpenModal}
         />
       </Box>
 
@@ -66,6 +90,13 @@ export const Converter = () => {
         baseAmount={amount}
         baseCurrency={pair.base}
         targetCurrency={pair.target}
+      />
+
+      <CurrencyModal
+        type={currencyModal}
+        onClose={handleCloseModal}
+        handleChangePair={handleChangePair}
+        currency={currencyModal ? pair[currencyModal] : ''}
       />
     </div>
   );

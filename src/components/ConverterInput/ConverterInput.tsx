@@ -1,11 +1,13 @@
 interface ConverterInputProps {
   amount: string;
   onChangeAmount: (amount: string) => void;
+  ref: React.RefObject<HTMLInputElement | null>;
 }
 
 export const ConverterInput = ({
   amount,
   onChangeAmount,
+  ref,
 }: ConverterInputProps) => {
   const handleChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) =>
     onChangeAmount(e.target.value);
@@ -16,6 +18,7 @@ export const ConverterInput = ({
         Amount
       </label>
       <input
+        ref={ref}
         className="flex-1 p-3 border border-neutral-300 bg-neutral-50 text-center rounded-2xl outline-none"
         type="text"
         id="amount"

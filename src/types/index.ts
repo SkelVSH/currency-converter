@@ -14,3 +14,8 @@ export interface CurrencyDetails {
   fullName?: string;
   key: string;
 }
+
+export interface CurrencyPair {
+  base: string;
+  target: string;
+}
