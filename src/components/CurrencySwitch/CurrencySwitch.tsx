@@ -25,7 +25,7 @@ export const CurrencySwitch = ({
       </button>
     </div>
     <button
-      className="size-10.5 flex items-center justify-center self-center"
+      className="size-10.5 flex items-center justify-center self-center md:self-auto"
       onClick={handleSwitchPair}>
       <img src={switchIcon} alt="Switch button" />
     </button>
