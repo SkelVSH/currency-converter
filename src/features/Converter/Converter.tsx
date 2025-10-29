@@ -2,7 +2,7 @@ import { Box } from '@/components/Box/Box';
 import { ConversionResult } from '@/components/ConversionResult';
 import { ConverterInput } from '@/components/ConverterInput';
 import { CurrencySwitch } from '@/components/CurrencySwitch';
-import { AMOUNT_REGEX } from '@/const';
+import { AMOUNT_REGEX, DEFAULT_PAIR } from '@/const';
 import { useRates } from '@providers/RatesContext';
 import { getUserInput, setUserInput } from '@services/userInput';
 import { useRef, useState } from 'react';
@@ -13,8 +13,8 @@ export const Converter = () => {
   const { getRate, currenciesList } = useRates();
   const cachedData = getUserInput();
   const [pair, setPair] = useState<CurrencyPair>({
-    base: cachedData?.base || currenciesList[0]?.key,
-    target: cachedData?.target || currenciesList[1]?.key,
+    base: cachedData?.base || currenciesList[0]?.key || DEFAULT_PAIR.base,
+    target: cachedData?.target || currenciesList[1]?.key || DEFAULT_PAIR.target,
   });
   const [amount, setAmount] = useState(cachedData?.amount || '1');
   const [currencyModal, setCurrencyModal] = useState<keyof CurrencyPair | null>(
@@ -61,10 +61,14 @@ export const Converter = () => {
     }
   };
 
+  const formattedAmount =
+    amount && (amount.endsWith('.') || amount.endsWith(','))
+      ? amount.slice(0, -1)
+      : amount;
   const rate = getRate(pair.base, pair.target)?.toFixed(6) ?? '';
   const inversedRate = getRate(pair.target, pair.base)?.toFixed(6) ?? '';
   const conversionResult = amount
-    ? (Number(amount) * Number(rate)).toFixed(2)
+    ? (Number(amount.replaceAll(',', '.')) * Number(rate)).toFixed(2)
     : '';
 
   return (
@@ -87,7 +91,7 @@ export const Converter = () => {
         targetAmount={conversionResult}
         rate={rate}
         inversedRate={inversedRate}
-        baseAmount={amount}
+        baseAmount={formattedAmount}
         baseCurrency={pair.base}
         targetCurrency={pair.target}
       />

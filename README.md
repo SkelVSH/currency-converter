@@ -11,6 +11,7 @@ This project uses TypeScript, Vite, Eslint and Prettier for code quality.
 - **React 19**: Chosen for its component-based architecture and ecosystem.
 - **TypeScript**: Provides static typing for better code quality and maintainability.
 - **Vite**: Selected for its fast build times and modern tooling.
+- **Tailwind CSS**: Utilized for styling and component composition.
 
 ### Code Quality Tools
 
@@ -21,16 +22,6 @@ This project uses TypeScript, Vite, Eslint and Prettier for code quality.
 
 - Paths are aliased for cleaner imports (e.g., `@components/*`, `@assets/*`).
 - Strict mode is enabled for better type safety.
-
-### Project Structure
-
-- **src/**: Contains application source code.
-  - **App.tsx**: Main application component.
-  - **index.tsx**: Entry point for rendering the React app.
-  - **assets/**: Stores static assets like SVGs.
-  - **vite-env.d.ts**: TypeScript declaration for Vite environment.
-- **public/**: Contains public files like `index.html` and `favicon.ico`.
-- **dist/**: Output folder for production builds.
 
 ### Package Management
 
@@ -67,3 +58,7 @@ Formats code using Prettier.
 
 - This project is configured for modern browsers as per the `browserslist` settings.
 - The development environment supports React's Strict Mode for highlighting potential issues.
+- Caching is enabled via saving data to localStorage.
+- Used vatcomply API to fetch rates because of no API key requirement.
+- Used tailwindcss to accelerate styling process.
+- Used React Compiler for the most efficient automatic memoization.
