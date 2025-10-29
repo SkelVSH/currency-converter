@@ -3,6 +3,9 @@
 @layer reset, base;
 
 @theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-lg: 1024px;
+
   --color-neutral-50: var(--neutral-50);
   --color-neutral-300: var(--neutral-300);
   --color-neutral-500: var(--neutral-500);
@@ -50,13 +53,18 @@
 
   body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     box-sizing: border-box;
 
     font-family: 'Inter Variable', sans-serif;
     color: var(--neutral-950);
+  }
+
+  @media screen and (min-width: 1024px) {
+    body {
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
   }
 
   button {

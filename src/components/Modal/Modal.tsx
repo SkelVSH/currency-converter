@@ -35,7 +35,9 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
 
   return createPortal(
     <div className="z-10 fixed top-0 left-0 w-screen h-screen bg-black/50 flex items-center justify-center">
-      <div ref={modalRef} className="p-4 w-110 bg-white rounded-2xl">
+      <div
+        ref={modalRef}
+        className="p-4 w-full mx-4 lg:mx-0 lg:w-110 bg-white rounded-2xl">
         <div className="flex items-center justify-between mb-3">
           <p className="font-semibold text-base">{title}</p>
           <button

@@ -68,14 +68,14 @@ export const CurrencyList = ({
   }, [currencies]);
 
   return (
-    <ul className="h-71 overflow-auto">
+    <ul className="h-[386px] lg:h-71 overflow-auto">
       {currencies.map((item, index) => (
         <li
           key={item.key}
           ref={(el) => {
             itemsRef.current[index] = el;
           }}
-          className="not-last:mb-3">
+          className="not-last:mb-2 lg:not-last:mb-3">
           <button
             onClick={() => onClick(item.key)}
             className={cn(

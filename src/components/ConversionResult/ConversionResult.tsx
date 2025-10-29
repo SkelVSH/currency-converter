@@ -27,7 +27,7 @@ export const ConversionResult = ({
   const inversedRateString = `1 ${targetCurrency} = ${inversedRate} ${baseCurrency}`;
 
   return (
-    <Box className="w-[336px]">
+    <Box className="w-full lg:w-[336px]">
       <p className="text-lg font-semibold">Conversion result</p>
       <div className="flex flex-col gap-1 items-center border-b border-neutral-200 pb-6">
         <p className="font-bold text-2xl">{amountWithSymbol}</p>

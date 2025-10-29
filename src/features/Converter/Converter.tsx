@@ -72,7 +72,7 @@ export const Converter = () => {
     : '';
 
   return (
-    <div className="flex items-start gap-7.5">
+    <div className="flex flex-col lg:flex-row items-stretch lg:items-start gap-7.5">
       <Box className="flex-1">
         <ConverterInput
           ref={inputRef}

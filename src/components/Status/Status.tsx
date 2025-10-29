@@ -12,7 +12,7 @@ export const Status = () => {
   const { forceRefetch, isLoading, lastUpdateTS } = useRates();
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 flex-col lg:flex-row">
       <span
         className={cn(
           'flex items-center gap-1 px-2 py-1 border rounded-lg font-semibold text-xs',

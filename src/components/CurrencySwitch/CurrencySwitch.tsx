@@ -15,7 +15,7 @@ export const CurrencySwitch = ({
   handleSwitchPair,
   handleOpenModal,
 }: CurrencySwitch) => (
-  <div className="flex gap-3 items-end">
+  <div className="flex gap-3 flex-col items-stretch lg:items-end lg:flex-row">
     <div className="flex flex-col gap-2 flex-1">
       <p className="text-xs font-semibold">From</p>
       <button
@@ -25,7 +25,7 @@ export const CurrencySwitch = ({
       </button>
     </div>
     <button
-      className="size-10.5 flex items-center justify-center"
+      className="size-10.5 flex items-center justify-center self-center"
       onClick={handleSwitchPair}>
       <img src={switchIcon} alt="Switch button" />
     </button>
