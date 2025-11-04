@@ -62,3 +62,4 @@ Formats code using Prettier.
 - Used vatcomply API to fetch rates because of no API key requirement.
 - Used tailwindcss to accelerate styling process.
 - Used React Compiler for the most efficient automatic memoization.
+- Deployed version [link](https://currency-converter-skelvsh.netlify.app/)
